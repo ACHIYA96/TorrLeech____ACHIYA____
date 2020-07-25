@@ -11,6 +11,7 @@ from PIL import Image
 
 
 async def save_thumb_nail(client, message):
+  if await AdminCheck(client, message.chat.id, message.from_user.id):
     thumbnail_location = os.path.join(
         DOWNLOAD_LOCATION,
         "thumbnails"
@@ -49,9 +50,13 @@ async def save_thumb_nail(client, message):
         )
     else:
         await message.edit("Reply to a photo to save custom thumbnail")
+  else 
+     msg = "This command is only available for my Owners!!"
+        await message.reply_text(msg, quote=True)
 
 
 async def clear_thumb_nail(client, message):
+  if await AdminCheck(client, message.chat.id, message.from_user.id):
     thumbnail_location = os.path.join(
         DOWNLOAD_LOCATION,
         "thumbnails"
@@ -64,3 +69,6 @@ async def clear_thumb_nail(client, message):
     if os.path.exists(thumb_image_path):
         os.remove(thumb_image_path)
     await ismgs.edit("✅ Custom thumbnail cleared succesfully.")
+  else 
+     msg = "This command is only available for my Owners!!"
+        await message.reply_text(msg, quote=True)
