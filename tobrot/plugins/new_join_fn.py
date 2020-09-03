@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K
+# (c) ACHIYA LK | [____ACHIYA____]
 
 # the logging things
 import logging
@@ -33,12 +33,12 @@ async def new_join_f(client, message):
 
 
 async def help_message_f(client, message):
-    # await message.reply_text("no one gonna help you 🤣🤣🤣🤣", quote=True)
+    # await message.reply_text("No one is gonna help you! 🤣🤣🤣🤣", quote=True)
     #channel_id = str(AUTH_CHANNEL)[4:]
     #message_id = 99
     # display the /help
     
-    await message.reply_text("""join this group for help-- @atvreqs\n\n [____ACHIYA____]""", disable_web_page_preview=True)
+    await message.reply_text("""Join this group for help-- @atvreqs\n\n PLEASE READ THIS 👉 https://t.me/c/1338634999/55 \n\n © [ _ _ _ _ ACHIYA _ _ _ _ ] \n\n <b>COMMANDS</b>\n /gleech@achi - Torrent/URL to GDrive\n /tleech@achi - Telegram Files to GDrive\n /ytdl@achi - Youtube vids to GDrive""", disable_web_page_preview=True)
 
 
 async def rename_message_f(client, message):

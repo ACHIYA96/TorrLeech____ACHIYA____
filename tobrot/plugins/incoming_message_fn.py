@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K | gautamajay52 | Akshay C
+# (c) ACHIYA LK | [____ACHIYA____]
 
 # the logging things
 import logging
@@ -30,7 +30,6 @@ from tobrot.helper_funcs.display_progress import progress_for_pyrogram
 from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
 from tobrot.helper_funcs.admin_check import AdminCheck
 from tobrot.helper_funcs.ytplaylist import yt_playlist_downg
-from tobrot.helper_funcs.cloneHelper import CloneHelper
 
 async def incoming_purge_message_f(client, message):
     """/purge command"""
@@ -42,7 +41,7 @@ async def incoming_purge_message_f(client, message):
         for download in downloads:
             LOGGER.info(download.remove(force=True))
     await i_m_sefg2.delete()
-
+    
 async def incoming_message_f(client, message):
     """/leech command"""
     i_m_sefg = await message.reply_text("processing", quote=True)
@@ -97,7 +96,7 @@ async def incoming_message_f(client, message):
             await i_m_sefg.edit_text(err_message)
     else:
         await i_m_sefg.edit_text(
-            "**FCUK**! wat have you entered. \nPlease read /help \n"
+            "**FRICK**! What have you done??🤯🤯 \nPlease read /help \n"
             f"<b>API Error</b>: {cf_name}"
         )
 #
@@ -152,8 +151,8 @@ async def incoming_gdrive_message_f(client, message):
         )
     else:
         await i_m_sefg.edit_text(
-            "**FCUK**! wat have you entered. \nPlease read /help \n"
-            f"<b>API Error</b>: {cf_name}"
+            "**FRICK**! What have you done??🤯🤯\n <b>Reply to your (Magnet or Direct)link</b>, if you want to get it uploaded into the Google Drive \nPlease read /help \n"
+            f"<b>API Error</b>: {cf_name}\n" "© [____ACHIYA____]"
         )
 
 
@@ -166,7 +165,7 @@ async def incoming_youtube_dl_f(client, message):
         message.reply_to_message, "YTDL"
     )
     LOGGER.info(dl_url)
-    #if len(message.command) > 1:
+     #if len(message.command) > 1:
         #if message.command[1] == "gdrive":
             #with open('blame_my_knowledge.txt', 'w+') as gg:
                 #gg.write("I am noob and don't know what to do that's why I have did this")
@@ -207,37 +206,21 @@ async def incoming_youtube_dl_f(client, message):
             )
     else:
         await i_m_sefg.edit_text(
-            "**FCUK**! wat have you entered. \nPlease read /help \n"
+            "**FRICK**! What have you done?? 🤯🤯\n <b>Reply to your (Magnet or Direct)link</b>, if you want to get it uploaded into the Google Drive \nPlease read /help \n"
             f"<b>API Error</b>: {cf_name}"
         )
 #playlist
 async def g_yt_playlist(client, message):
     """ /pytdl command """
-    #i_m_sefg = await message.reply_text("Processing...you should wait🤗", quote=True)
+    #i_m_sefg = await message.reply_text("Processing...Wait n watch Baby 🤗", quote=True)
     usr_id = message.from_user.id
     G_DRIVE = False
     if len(message.command) > 1:
         if message.command[1] == "gdrive":
             G_DRIVE = True
     if 'youtube.com/playlist' in message.reply_to_message.text:
-        i_m_sefg = await message.reply_text("Downloading...you should wait🤗", quote=True)
+        i_m_sefg = await message.reply_text("Downloading...Wait n watch Baby 🤗", quote=True)
         await yt_playlist_downg(message.reply_to_message, i_m_sefg, G_DRIVE)
-    
-    else:
-        await message.reply_text("Reply to youtube playlist link only 🙄")
         
- #
-async def g_clonee(client, message):
-    """ /gclone command """
-    g_id = message.from_user.id
-    if message.reply_to_message is not None:
-        LOGGER.info(message.reply_to_message.text)
-        gclone = CloneHelper(message)
-        gclone.config()
-        a, h = gclone.get_id()
-        LOGGER.info(a)
-        LOGGER.info(h)
-        await gclone.gcl()
-        await gclone.link_gen_size()
     else:
-        await message.reply_text("You should reply to a message, which format should be [ID of Gdrive file/folder Name of the file/folder]\nOr read Github for detailled information")
+        await message.reply_text("BRO! SERIOUSLY?🙄..\n Reply to the link of your YOUTUBE PLAYLIST, if you want to get it uploaded into Telegram")

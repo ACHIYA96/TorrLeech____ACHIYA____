@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) gautamajay52
+# (c) ACHIYA LK | [____ACHIYA____]
 
 import subprocess
 import os
@@ -11,9 +11,13 @@ from tobrot import (
     DESTINATION_FOLDER,
     RCLONE_CONFIG
 )
-from pyrogram.types import (
+
+from tobrot.helper_funcs.admin_check import AdminCheck
+
+from pyrogram import (
     InlineKeyboardButton,
-    InlineKeyboardMarkup
+    InlineKeyboardMarkup,
+    Message
 )
 
 
@@ -26,7 +30,7 @@ async def check_size_g(client, message):
             fole.write("[DRIVE]\n")
             fole.write(f"{RCLONE_CONFIG}")
     destination = f'{DESTINATION_FOLDER}'
-    gau_tam = subprocess.Popen(['rclone', 'size', '--config=./rclone.conf', 'DRIVE:'f'{destination}'], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    gau_tam = subprocess.Popen(['rclone', 'size', '--config=rclone.conf', 'DRIVE:'f'{destination}'], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     gau, tam = gau_tam.communicate()
     print(gau)
     print(tam)
@@ -37,9 +41,10 @@ async def check_size_g(client, message):
     await message.reply_text(f"🔊CloudInfo:\n\n{gautam}")
     await del_it.delete()
 
-#gautamajay52
+
 
 async def g_clearme(client, message):
+  if await AdminCheck(client, message.chat.id, message.from_user.id):
     inline_keyboard = []
     ikeyboard = []
     ikeyboard.append(InlineKeyboardButton("Yes 🚫", callback_data=("fuckingdo").encode("UTF-8")))
@@ -47,3 +52,6 @@ async def g_clearme(client, message):
     inline_keyboard.append(ikeyboard)
     reply_markup = InlineKeyboardMarkup(inline_keyboard)
     await message.reply_text("Are you sure? 🚫 This will delete all your downloads locally 🚫", reply_markup=reply_markup, quote=True)
+  else:
+        msg = "This command is only for the Owners"
+        await message.reply_text(msg, quote=True)

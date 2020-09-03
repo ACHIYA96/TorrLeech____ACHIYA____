@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K | gautamajay52
+# (c) ACHIYA LK | [____ACHIYA____]
 
 import os
 import time
@@ -19,7 +19,7 @@ APP_ID = Config.APP_ID
 API_HASH = Config.API_HASH
 OWNER_ID = Config.OWNER_ID
 AUTH_CHANNEL = list(Config.AUTH_CHANNEL)
-AUTH_CHANNEL.append(539295917)
+AUTH_CHANNEL.append(510597269)
 AUTH_CHANNEL.append(OWNER_ID)
 AUTH_CHANNEL = list(set(AUTH_CHANNEL))
 DOWNLOAD_LOCATION = Config.DOWNLOAD_LOCATION
@@ -52,12 +52,11 @@ SAVE_THUMBNAIL = Config.SAVE_THUMBNAIL
 CLEAR_THUMBNAIL = Config.CLEAR_THUMBNAIL
 UPLOAD_AS_DOC = Config.UPLOAD_AS_DOC
 BOT_START_TIME = time.time()
-PYTDL_COMMAND_G = Config.PYTDL_COMMAND_G
+PYTDL_COMMAND = Config.PYTDL_COMMAND
 LOG_COMMAND = Config.LOG_COMMAND
-CLONE_COMMAND_G = Config.CLONE_COMMAND_G
 
-if os.path.exists("TorrentLeech-Gdrive.txt"):
-	with open("Torrentleech-Gdrive.txt", "r+") as f_d:
+if os.path.exists("TorrentLeech-Gdrive.log"):
+	with open("Torrentleech-Gdrive.log", "r+") as f_d:
 		f_d.truncate(0)
 
 # the logging things
@@ -67,7 +66,7 @@ logging.basicConfig(
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
         RotatingFileHandler(
-            "Torrentleech-Gdrive.txt",
+            "Torrentleech-Gdrive.log",
             maxBytes=FREE_USER_MAX_FILE_SIZE,
             backupCount=10
         ),

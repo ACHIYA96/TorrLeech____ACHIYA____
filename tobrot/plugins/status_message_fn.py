@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K | gautamajay52
+# (c) ACHIYA LK | [____ACHIYA____]
 
 # the logging things
 import logging
@@ -39,6 +39,7 @@ from tobrot.helper_funcs.display_progress import (
 
 
 async def status_message_f(client, message):
+  if await AdminCheck(client, message.chat.id, message.from_user.id):
     aria_i_p = await aria_start()
     # Show All Downloads
     downloads = aria_i_p.get_downloads()
@@ -81,21 +82,24 @@ async def status_message_f(client, message):
     LOGGER.info(msg)
 
     if msg == "":
-        msg = "🤷‍♂️ No Active, Queued or Paused TORRENTs"
+        msg = "🤷‍♂️ No Active, Queued or Paused TORRENTs \n I'm just chilling here 😎"
 
-    currentTime = time.strftime("%H:%M:%S", time.gmtime(time.time() - BOT_START_TIME))   #ctrl-c & ctrl-v 😑
+    currentTime = TimeFormatter((time.time() - BOT_START_TIME))
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)
     used = humanbytes(used)
     free = humanbytes(free)
 
-    ms_g = f"<b>Bot Uptime</b>: <code>{currentTime}</code>\n" \
+    ms_g = f"<b>STATUS</b> 📊\n<b>Bot Uptime</b>: <code>{currentTime}</code>\n \n📂💾\n" \
         f"<b>Total disk space</b>: <code>{total}</code>\n" \
         f"<b>Used</b>: <code>{used}</code>\n" \
         f"<b>Free</b>: <code>{free}</code>\n"
 
     msg = ms_g + "\n" + msg
     await message.reply_text(msg, quote=True)
+  else:
+      msg = "This command is only for the Owners"
+      await message.reply_text(msg, quote=True)
 
 async def cancel_message_f(client, message):
     if len(message.command) > 1:
@@ -241,5 +245,5 @@ async def aexec(code, client, message):
 '''
 async def upload_log_file(client, message):
     await message.reply_document(
-        "Torrentleech-Gdrive.txt"
+        "Torrentleech-Gdrive.log"
     )
